@@ -1,0 +1,76 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+header {
+  width: 100%;
+}
+header iframe {
+  width: 100%;
+  height: 68px;
+  margin-bottom: 20px;
+}
+.registerbox {
+  width: 1000px;
+  margin: auto;
+  border: 1px solid #999;
+  margin-top: 20px;
+  padding-top: 10px;
+  border-radius: 10px;
+  margin-bottom: 30px;
+}
+.registerbox p {
+  width: 100%;
+  border-left: 5px solid red;
+  padding-left: 10px;
+  font-size: 18px;
+}
+.registerbox .register {
+  width: 400px;
+  margin: auto;
+  margin-top: 60px;
+  padding-bottom: 100px;
+}
+.registerbox .register input {
+  width: 100%;
+  height: 50px;
+  margin-bottom: 30px;
+  border-radius: 10px;
+  border: none;
+  background-color: #f7f7f7;
+  padding-left: 15px;
+  box-sizing: border-box;
+  font-size: 16px;
+}
+.registerbox .register > .pic,
+.registerbox .register > .num {
+  width: 60%;
+}
+.registerbox .register img {
+  font-size: 0;
+  width: 36%;
+  vertical-align: middle;
+}
+.registerbox .register button {
+  width: 30%;
+  height: 50px;
+  border-radius: 10px;
+  border: 1px solid #a3a3a3;
+  margin-left: 30px;
+  font-size: 16px;
+  color: #a3a3a3;
+  background-color: white;
+}
+.registerbox .register .reg {
+  width: 100%;
+  height: 50px;
+  background-color: red;
+  margin-left: 0px;
+  border: none;
+  color: white;
+}
+footer iframe {
+  width: 100%;
+  height: 360px;
+  margin-bottom: 10px;
+}

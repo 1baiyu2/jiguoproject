@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login</title>
+    <link rel="stylesheet" href="./css/login.css">
+    <link rel="stylesheet" href="./css/publiccss/header.css">
+</head>
+
+<body>
+    <!-- header 头部-->
+    <header>
+        <!-- 头部中心 -->
+        <div class="headerbox">
+            <ul class="left">
+                <li><img src="../img/logonew.png" alt=""></li>
+                <li>
+                    <a href="#" class="color">首页</a>
+                </li>
+                <li>
+                    <a href="./play/2.Coldplaynew.html">酷玩</a>
+                </li>
+                <li>
+                    <a href="./shopping/3.shopping.html">导购</a>
+                </li>
+                <li>
+                    <a href="./try/try.html">试用</a>
+                </li>
+                <li>
+                    <a href="./Physical/Physical.html">报告</a>
+                </li>
+            </ul>
+            <div class="right">
+                <div class="headericon">
+
+                </div>
+                <a href="#" class="login" target="_blank">登录</a>
+                <a href="./register.html" class="register" target="_blank">注册</a>
+                <span class="personal"></span>
+                <div class="leaveout">
+                    <span>个人中心</span>
+                    <p class="leave">退出登录</p>
+                </div>
+            </div>
+
+        </div>
+    </header>
+    <!-- 登录页面 -->
+    <div class="loginbox">
+        <p>登录极果</p>
+        <div class="login">
+            <input type="text" placeholder="请输入用户名" id="username">
+            <input type="password" placeholder="请输入密码" id="pwd">
+            <button onclick="login()" class="log">登录</button>
+        </div>
+
+    </div>
+    <!-- 底部 -->
+    <footer>
+        <iframe src="./public/footer.html" frameborder="0" scrolling="no"></iframe>
+    </footer>
+</body>
+
+</html>
+
+<script src="./js/header.js"></script>
+<script src="./js/login.js"></script>
+<!-- <script>
+    function login() {
+        // 获取用户名
+        console.log('123456');
+        var username = document.getElementById('username');
+        // 获取用户名密码
+        var pwd = document.getElementById('pwd');
+        var uname = localStorage.getItem('uname');
+        var upwd = localStorage.getItem('pwd');
+        if (uname == username.value && upwd == pwd.value) {
+            localStorage.setItem('istrue', true);
+            location.href = "./1.index.html";
+        }
+        else {
+            alert("登录失败，请重新登录");
+            location.reload();
+        }
+    }
+</script> -->

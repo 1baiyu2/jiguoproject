@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>导购页面</title>
+    <link rel="stylesheet" href="./css/shopping.css">
+    <link rel="stylesheet" href="../css/publiccss/header.css">
+</head>
+
+<body>
+    <div class="box">
+        <!-- 头部 -->
+        <header>
+            <!-- 头部中心 -->
+            <div class="headerbox">
+                <ul class="left">
+                    <li><img src="../img/logonew.png" alt=""></li>
+                    <li>
+                        <a href="../1.index.html">首页</a>
+                    </li>
+                    <li>
+                        <a href="../play/2.Coldplaynew.html">酷玩</a>
+                    </li>
+                    <li>
+                        <a href="#" class="color">导购</a>
+                    </li>
+                    <li>
+                        <a href="../try/try.html">试用</a>
+                    </li>
+                    <li>
+                        <a href="../Physical/Physical.html">报告</a>
+                    </li>
+                </ul>
+                <div class="right">
+                    <div class="headericon">
+
+                    </div>
+                    <a href="../login.html" class="login" target="_blank">登录</a>
+                    <a href="../register.html" class="register" target="_blank">注册</a>
+                    <span class="personal"></span>
+
+                </div>
+
+            </div>
+        </header>
+        <!-- 主体部分 -->
+        <p class="shopping">导购清单</p>
+        <ul class="select">
+            <li class="line">最新</li>
+            <li>最热</li>
+        </ul>
+        <!--展示内容 -->
+        <main>
+            <ul class="content">
+                <li>
+                    <a href="./3-1daogoujiyu.html">
+                        <img src="../img/k1.jpg" style="width:220px;height:130px" alt="">
+                        <div class="wenzi">
+                            <p>花万元把蜗居秒变“豪宅”? 这12件家具就能帮你办到</p>
+                            <span></span>
+                            <div class="mobox">
+                                <span></span>
+                                <div class="box">
+                                    <span class="xin">3</span>
+                                    <span class="look">3</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="info"></div>
+                    </a>
+                </li>
+            </ul>
+            <ul class="content">
+                <li>
+                    <a href="./3-1daogoujiyu.html">
+                        <img src="../img/k1.jpg" style="width:220px;height:130px" alt="">
+                        <div class="wenzi">
+                            <p>花万元把蜗居秒变“豪宅”? 这12件家具就能帮你办到</p>
+                            <span></span>
+                            <div class="mobox">
+                                <span></span>
+                                <div class="box">
+                                    <span class="xin">3</span>
+                                    <span class="look">3</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="info"></div>
+                    </a>
+                </li>
+            </ul>
+            <div class="more"><span class="dianjimore">点击加载更多</span></div>
+
+        </main>
+        <div class="footer">
+            <iframe src="../public/footer.html" frameborder="0"></iframe>
+        </div>
+
+    </div>
+
+</body>
+
+</html>
+<script src="../js/axios.min.js"></script>
+<script src="../js/header.js"></script>
+<script>
+    // 点击跳转页面
+    var select = document.querySelector('.select');
+    var content = document.getElementsByClassName('content');
+    var dianjimore2 = document.getElementsByClassName('dianjimore');
+
+    // dianjimore2.style.background = 'url(../img/loading-icon.gif) no-repeat 0px center';
+
+
+    var li = select.children;
+    for (var i = 0; i < li.length; i++) {
+        li[i].setAttribute('index', i);
+
+        li[i].onclick = function () {
+            var ind = this.getAttribute('index');
+            for (var j = 0; j < li.length; j++) {
+                li[j].classList.remove('line');
+                content[j].style.display = 'none';
+                // dianjimore2[j].style.background = 'url(../img/more.png) no-repeat 0px center';
+
+
+            }
+            li[ind].classList.add('line');
+            content[ind].style.display = 'flex';
+        }
+    }
+
+    // 获取数据进行展示
+    // 请求并展示数据
+    function showData() {
+
+        var content = document.getElementsByClassName('content')[0];
+        axios.get('http://127.0.0.1:3000/guid/new').then(res => {
+            // console.log(res.data);
+            var data = res.data;
+            var str = '';
+            for (var i = 0; i < data.length; i++) {
+                // console.log(data[i]);
+                str += `<li>
+                    <a href="./3-1daogoujiyu.html">
+    <img src="${data[i].img}" style="width:220px;height:130px" alt="">
+    <div class="wenzi">
+        <p>${data[i].text}</p>
+        <span></span>
+        <div class="mobox">
+            <span></span>
+            <div class="box">
+                <span class="xin">${data[i].like}</span>
+                <span class="look">${data[i].words}</span>
+            </div>
+        </div>
+    </div>
+    <div class="info"></div>
+</a>
+    
+</li>`;
+            }
+            content.innerHTML = str + '<li></li>';
+
+            var dianjimore = document.getElementsByClassName('dianjimore')[0];
+            dianjimore.onclick = function () {
+                dianjimore.style.background = 'url(../img/loading-icon.gif) no-repeat 0px center';
+            };
+        }).catch(error => {
+            console.log('失败了');
+        });
+
+
+
+        var content1 = document.getElementsByClassName('content')[1];
+        axios.get('http://127.0.0.1:3000/guid/hot').then(res => {
+            // console.log(res.data);
+            var data1 = res.data;
+            var str = '';
+            for (var i = 0; i < data1.length; i++) {
+                // console.log(data1[i]);
+                str += `<li>
+                    <a href="./3-1daogoujiyu.html">
+    <img src="${data1[i].img}" style="width:220px;height:130px" alt="">
+    <div class="wenzi">
+        <p>${data1[i].text}</p>
+        <span></span>
+        <div class="mobox">
+            <span></span>
+            <div class="box">
+                <span class="xin">${data1[i].like}</span>
+                <span class="look">${data1[i].words}</span>
+            </div>
+        </div>
+    </div>
+    <div class="info"></div>
+</a>   
+</li>`;
+            }
+            content1.innerHTML = str + '<li></li>';
+
+            var dianjimore1 = document.getElementsByClassName('dianjimore')[1];
+            dianjimore1.onclick = function () {
+                dianjimore1.style.background = 'url(../img/loading-icon.gif) no-repeat 0px center';
+            };
+        }).catch(error => {
+            console.log('失败了');
+        })
+
+    }
+
+    window.onload = showData;
+
+    // 最热部分
+    // function showData1() {
+
+    // }
+    // window.onload = showData1
+</script>

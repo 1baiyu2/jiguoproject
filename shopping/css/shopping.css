@@ -1,0 +1,126 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+ul {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+}
+.header {
+  width: 100%;
+  height: 68px;
+}
+.header iframe {
+  width: 100%;
+  height: 100%;
+}
+.shopping {
+  width: 100%;
+  height: 120px;
+  text-align: center;
+  line-height: 120px;
+  font-size: 38px;
+  font-weight: 500;
+}
+.select {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.select li {
+  padding: 10px 60px;
+}
+.select .line {
+  border-bottom: 4px solid red;
+}
+.select .line a {
+  color: red !important;
+}
+main {
+  background-color: #f7f7f7;
+  overflow: hidden;
+}
+main .content {
+  width: 1000px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-top: 30px;
+}
+main .content li {
+  width: 220px;
+  height: 240px;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+main .content li a {
+  color: gray;
+}
+main .content li img {
+  border-radius: 5px 5px 0px 0px;
+}
+main .content li .wenzi {
+  padding: 10px;
+  background-color: white;
+}
+main .content li .wenzi p {
+  font-weight: 400;
+  white-space: pre-wrap;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+main .content li .wenzi .mobox {
+  width: 100%;
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+main .content li .wenzi .mobox span {
+  color: red;
+  font-size: 16px;
+}
+main .content li .wenzi .mobox .box span {
+  padding-left: 15px;
+  color: gray;
+}
+main .content li .wenzi .mobox .box .xin {
+  background: url(../../img/xin.png) 0px center no-repeat;
+}
+main .content li .wenzi .mobox .box .look {
+  background: url(../../img/reply.png) 0px center no-repeat;
+}
+main .content .info {
+  width: 100%;
+  height: 20px;
+  background: url(../../img/listbg.jpg) no-repeat;
+  background-size: 100% 100%;
+}
+main .more {
+  width: 100%;
+  text-align: center;
+}
+main .more span {
+  color: red;
+  padding-left: 18px;
+  background: url(../../img/more.png) no-repeat 0px center;
+}
+main .content:nth-of-type(1) {
+  display: none;
+}
+.footer {
+  width: 100%;
+  height: 360px;
+}
+.footer iframe {
+  width: 100%;
+  height: 100%;
+}

@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>酷玩页面-最新</title>
+    <link rel="stylesheet" href="../css/Coldplay.css">
+    <link rel="stylesheet" href="../css/publiccss/header.css">
+</head>
+
+<body>
+    <div class="box">
+        <!-- 导航部分 -->
+        <header>
+            <!-- 头部中心 -->
+            <div class="headerbox">
+                <ul class="left">
+                    <li><img src="../img/logonew.png" alt=""></li>
+                    <li>
+                        <a href="../1.index.html">首页</a>
+                    </li>
+                    <li>
+                        <a href="#" class="color">酷玩</a>
+                    </li>
+                    <li>
+                        <a href="../shopping/3.shopping.html">导购</a>
+                    </li>
+                    <li>
+                        <a href="../try/try.html">试用</a>
+                    </li>
+                    <li>
+                        <a href="../Physical/Physical.html">报告</a>
+                    </li>
+                </ul>
+                <div class="right">
+                    <div class="headericon">
+
+                    </div>
+                    <a href="../login.html" class="login" target="_blank">登录</a>
+                    <a href="../register.html" class="register" target="_blank">注册</a>
+                    <span class="personal"></span>
+                    <div class="leaveout">
+                        <span>个人中心</span>
+                        <p class="leave">退出登录</p>
+                    </div>
+                </div>
+
+            </div>
+        </header>
+        <!-- 发现酷玩 -->
+        <p class="faxian">
+            发现酷玩
+        </p>
+        <ul class="select">
+            <li class="line"><a href="#">最新</a></li>
+            <li><a href="./2.Coldplayhot.html">最热</a></li>
+            <li><a href="./2.Coldplayclass.html">品类</a></li>
+        </ul>
+        <!--展示内容 -->
+        <main>
+            <ul class="content">
+                <!-- <li>
+                    <img src="../img/k1.jpg" style="width:220px;height:130px" alt="">
+                    <div class="wenzi">
+                        <p>SCIO 微型光谱仪</p>
+                        <span>可以测定食物成分及营养</span>
+                        <div class="mobox">
+                            <span>￥ 1212</span>
+                            <div class="box">
+                                <span class="xin">3</span>
+                                <span class="look">3</span>
+                            </div>
+                        </div>
+                    </div>
+                </li> -->
+            </ul>
+            <div class="more"><span class="dianjimore">点击加载更多</span></div>
+            <div class="footer">
+                <iframe src="../public/footer.html" frameborder="0"></iframe>
+            </div>
+        </main>
+
+    </div>
+
+</body>
+
+</html>
+<script src="../js/axios.min.js"></script>
+<script src="../js/header.js"></script>
+<script>
+    // 点击跳转页面
+    var select = document.querySelector('.select');
+    var li = select.children;
+    for (var i = 0; i < li.length; i++) {
+        li[i].setAttribute('index', i);
+        li[i].onclick = function () {
+            var ind = this.getAttribute('index');
+            for (var j = 0; j < li.length; j++) {
+                li[j].classList.remove('line');
+
+
+            }
+            li[ind].classList.add('line');
+        }
+    }
+    // 请求并展示数据
+    function showData() {
+        var content = document.querySelector('.content');
+        var index = 0;
+        var timer = '';
+        axios.get('http://127.0.0.1:3000/play/new').then(res => {
+            var string = '';
+
+            // function show() {
+            //     timer = setInterval(function () {
+            for (var j = 0; j < 2; j++) {
+                var data = res.data[j];
+                var str = '';
+                for (var i = 0; i < data.length; i++) {
+                    // console.log(data[i]);
+
+                    str += `<li>
+    <img src="${data[i].img}" style="width:220px;height:130px" alt="">
+    <div class="wenzi">
+        <p>${data[i].text}</p>
+        <span>${data[i].description}</span>
+        <div class="mobox">
+            <span>${data[i].price}</span>
+            <div class="box">
+                <span class="xin">${data[i].like}</span>
+                <span class="look">${data[i].words}</span>
+            </div>
+        </div>
+    </div>
+</li>`
+                }
+
+                string = string + str;
+
+
+
+
+
+            }
+            content.innerHTML = string;
+            // index++;
+            // if (index == 2) {
+            //     clearInterval(timer);
+            // };
+            // if (index == 4) {
+            //     clearInterval(timer);
+            // }
+            // console.log('hhhh');
+            //     }, 1000);
+            // }
+            // show();
+
+            var dianjimore = document.querySelector('.dianjimore');
+            dianjimore.onclick = function () {
+                index = 2;
+                dianjimore.style.background = 'url(../img/loading-icon.gif) no-repeat 0px center';
+                setTimeout(function () {
+                    // show();
+
+
+                    for (var j = 2; j < 4; j++) {
+                        var data = res.data[j];
+                        var str = '';
+                        for (var i = 0; i < data.length; i++) {
+                            // console.log(data[i]);
+
+                            str +=
+                                `<li>
+    <img src="${data[i].img}" style="width:220px;height:130px" alt="">
+    <div class="wenzi">
+        <p>${data[i].text}</p>
+        <span>${data[i].description}</span>
+        <div class="mobox">
+            <span>${data[i].price}</span>
+            <div class="box">
+                <span class="xin">${data[i].like}</span>
+                <span class="look">${data[i].words}</span>
+            </div>
+        </div>
+    </div>
+</li>`
+                        }
+                        console.log(j);
+                        string = string + str;
+                        console.log(string);
+                    }
+                    content.innerHTML = string;
+                    dianjimore.style.display = 'none';
+                }, 2000)
+
+
+
+            };
+
+
+
+
+
+        }).catch(error => {
+            console.log('失败了');
+        })
+
+    }
+    // console.log(document.documentElement.clientWidth);
+    // setTimeout(showData, 300);
+    window.onload = showData;
+
+</script>

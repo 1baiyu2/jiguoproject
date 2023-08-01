@@ -8,7 +8,7 @@ function login() {
     var upwd = localStorage.getItem('pwd');
     if (uname == username.value && upwd == pwd.value) {
         sessionStorage.setItem('istrue', true);
-        location.href = "./1.index.html";
+        location.href = "./index.html";
     }
     else {
         alert("登录失败，请重新登录");

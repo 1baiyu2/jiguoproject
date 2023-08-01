@@ -7,7 +7,7 @@ function login() {
     var uname = localStorage.getItem('uname');
     var upwd = localStorage.getItem('pwd');
     if (uname == username.value && upwd == pwd.value) {
-        localStorage.setItem('istrue', true);
+        sessionStorage.setItem('istrue', true);
         location.href = "./1.index.html";
     }
     else {
